@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homework_3_Csharp_Courses", "Homework_3_Csharp_Courses\Homework_3_Csharp_Courses.csproj", "{CB6DCB1A-F14F-4804-B833-F55F362024E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordParser.Tests", "WordParser.Tests\WordParser.Tests.csproj", "{CAAEB3A4-C6E5-4EAD-8DA1-8DAC294C4062}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB6DCB1A-F14F-4804-B833-F55F362024E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB6DCB1A-F14F-4804-B833-F55F362024E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB6DCB1A-F14F-4804-B833-F55F362024E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB6DCB1A-F14F-4804-B833-F55F362024E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAEB3A4-C6E5-4EAD-8DA1-8DAC294C4062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAEB3A4-C6E5-4EAD-8DA1-8DAC294C4062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAEB3A4-C6E5-4EAD-8DA1-8DAC294C4062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAEB3A4-C6E5-4EAD-8DA1-8DAC294C4062}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEA6FBD5-04A0-4174-A28A-6A36E639E193}
+	EndGlobalSection
+EndGlobal
