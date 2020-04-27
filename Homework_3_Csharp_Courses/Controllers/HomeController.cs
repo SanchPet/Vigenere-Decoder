@@ -45,6 +45,11 @@ namespace Homework_3_Csharp_Courses.Controllers
             return View();
         }
 
+        public IActionResult SThanks()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
             return View();
@@ -122,5 +127,5 @@ namespace Homework_3_Csharp_Courses.Controllers
       
     }
    
-
+    
 }

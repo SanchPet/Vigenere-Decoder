@@ -10,19 +10,19 @@ namespace WordParser.Tests
 {
     class TestClass : IFormFile
     {
-        public string ContentDisposition => throw new NotImplementedException();
+        public string ContentDisposition { get; set; }
 
-        public string ContentType => throw new NotImplementedException();
+        public string ContentType { get; set; }
 
-        public string FileName => throw new NotImplementedException();
+        public string FileName { get; set; }
 
-        public IHeaderDictionary Headers => throw new NotImplementedException();
+        public IHeaderDictionary Headers { get; set; }
+
+        public long Length { get; set; }
+
+        public string Name { get; set; }
 
         public Stream stream;
-
-        public long Length => throw new NotImplementedException();
-
-        public string Name => throw new NotImplementedException();
 
         public void CopyTo(Stream target)
         {
@@ -39,8 +39,9 @@ namespace WordParser.Tests
             return stream;
         }
 
-        public TestClass(FileStream s)
+        public TestClass(FileStream s, string fileName)
         {
+            this.FileName = fileName;
             stream = s;
         }
     }

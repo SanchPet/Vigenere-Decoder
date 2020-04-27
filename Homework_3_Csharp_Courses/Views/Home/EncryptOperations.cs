@@ -22,18 +22,18 @@ namespace Homework_3_Csharp_Courses.Views.Home
         {
             string result = "";
             if (Path.GetExtension(file.FileName).ToLower() == ".docx")
-            {               
+            {
                 using (Stream fs = file.OpenReadStream())
                 {
                     var doc = DocX.Load(fs);
                     for (int i = 0; i < doc.Paragraphs.Count; i++)
                     {
                         result += doc.Paragraphs[i].Text;
-                        if (i != doc.Paragraphs.Count - 1) result += "\r\n";
+                        if (i != doc.Paragraphs.Count - 1) result += "\n";
                     }
                 }
             }
-            else throw new Exception("Вы загрузили неподдерживаемый формат файла.");
+            else throw Exceptions.CallExcepton(1);
             return result;
         }
 
