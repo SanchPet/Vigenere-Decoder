@@ -14,6 +14,8 @@
     <h4>Введите ключ:</h4>
     <input type="text" name="Key" value="@ViewBag.Key" /><br><br>
     <input type="submit" value="Submit">
+    <label style="margin-left:2vw;">@Html.RadioButton("Rus", "true", ViewBag.Rus == null, null)Russian</label>
+    <label style="margin-left:1vw;">@Html.RadioButton("Rus", "false", ViewBag.Rus != null, null)English</label>
 </form>
 <div class="col-md-6" style="text-align:center">
     @if (ViewBag.Result != null)

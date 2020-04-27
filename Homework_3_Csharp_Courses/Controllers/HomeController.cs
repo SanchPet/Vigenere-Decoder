@@ -95,13 +95,20 @@ namespace Homework_3_Csharp_Courses.Controllers
         }
 
         [HttpPost]
-        public IActionResult DecryptFile(IFormFile UsersFile, string Key, string InputText)
+        public IActionResult DecryptFile(IFormFile UsersFile, string Key, string InputText, bool Rus)
         {
             if (UsersFile != null)
             {
                 try
                 {
-                    ViewBag.Result = EncryptOperations.Decoder(EncryptOperations.ParseWord(UsersFile), Key);
+                    if (Rus)
+                    {
+                        ViewBag.Result = EncryptOperations.Decoder(EncryptOperations.ParseWord(UsersFile), Key, "Rus");
+                    }
+                    else
+                    {
+                        ViewBag.Result = EncryptOperations.Decoder(EncryptOperations.ParseWord(UsersFile), Key, "Eng");
+                    }
                 }
                 catch(Exception e)
                 {
@@ -110,7 +117,21 @@ namespace Homework_3_Csharp_Courses.Controllers
             }          
             else
             {
-                ViewBag.Result = EncryptOperations.Decoder(InputText, Key);
+                try
+                {
+                    if (Rus)
+                    {
+                        ViewBag.Result = EncryptOperations.Decoder(InputText, Key, "Rus");
+                    }
+                    else
+                    {
+                        ViewBag.Result = EncryptOperations.Decoder(InputText, Key, "Eng");
+                    }
+                }
+                catch (Exception e)
+                {
+                    return Content(e.Message);
+                }
             }
             ViewBag.BaseValue = InputText;
             ViewBag.Key = Key;
@@ -118,13 +139,20 @@ namespace Homework_3_Csharp_Courses.Controllers
         }
 
         [HttpPost]
-        public IActionResult EncryptFile(IFormFile UsersFile, string InputText, string Key)
+        public IActionResult EncryptFile(IFormFile UsersFile, string InputText, string Key, bool Rus)
         {
             if (UsersFile != null)
             {
                 try
                 {
-                    ViewBag.Result = EncryptOperations.Encoder(EncryptOperations.ParseWord(UsersFile), Key);
+                    if (Rus)
+                    {
+                        ViewBag.Result = EncryptOperations.Encoder(EncryptOperations.ParseWord(UsersFile), Key, "Rus");
+                    }
+                    else
+                    {
+                        ViewBag.Result = EncryptOperations.Encoder(EncryptOperations.ParseWord(UsersFile), Key, "Eng");
+                    }
                 }
                 catch (Exception e)
                 {
@@ -133,7 +161,21 @@ namespace Homework_3_Csharp_Courses.Controllers
             }
             else
             {
-                ViewBag.Result = EncryptOperations.Encoder(InputText, Key);
+                try
+                {
+                    if (Rus)
+                    {
+                        ViewBag.Result = EncryptOperations.Encoder(InputText, Key, "Rus");
+                    }
+                    else
+                    {
+                        ViewBag.Result = EncryptOperations.Encoder(InputText, Key, "Eng");
+                    }
+                }
+                catch(Exception e)
+                {
+                    return Content(e.Message);
+                }
             }
             ViewBag.BaseValue = InputText;
             ViewBag.Key = Key;

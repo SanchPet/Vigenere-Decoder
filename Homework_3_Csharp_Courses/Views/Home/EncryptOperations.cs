@@ -16,10 +16,17 @@ namespace Homework_3_Csharp_Courses.Views.Home
 {
     public class EncryptOperations
     {
-        static string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        static Dictionary<string, string> Languages = new Dictionary<string, string>();
+        
+        static EncryptOperations()
+        {
+            Languages.Add("Rus", "абвгдеёжзийклмнопрстуфхцчшщъыьэюя");
+            Languages.Add("Eng", "abcdefghijklmnopqrstuvwxyz");
+        }
 
         public static string ParseWord(IFormFile file)
         {
+            
             string result = "";
             if (Path.GetExtension(file.FileName).ToLower() == ".docx")
             {
@@ -44,9 +51,15 @@ namespace Homework_3_Csharp_Courses.Views.Home
             return result;
         }
 
-        public static string Encoder(string stringToEncode, string key)
+        public static string Encoder(string stringToEncode, string key, string alph)
         {
             if (string.IsNullOrWhiteSpace(key)) throw new Exceptions.WrongKeyException();
+            string alphabet = Languages[alph];
+            key = key.ToLower();
+            foreach (var item in key)
+            {
+                if (!alphabet.Contains(item)) throw new Exceptions.WrongKeyException();
+            }
             StringBuilder res = new StringBuilder(); 
             int i = 0;
             foreach (var symbol in stringToEncode)
@@ -71,9 +84,15 @@ namespace Homework_3_Csharp_Courses.Views.Home
             return res.ToString();
         }
 
-        public static string Decoder(string stringToDecode, string key)
+        public static string Decoder(string stringToDecode, string key, string alph)
         {
             if (string.IsNullOrWhiteSpace(key)) throw new Exceptions.WrongKeyException();
+            string alphabet = Languages[alph];
+            key = key.ToLower();
+            foreach (var item in key)
+            {
+                if(!alphabet.Contains(item)) throw new Exceptions.WrongKeyException();
+            }
             StringBuilder res = new StringBuilder();
             int i = 0;
             foreach (var symbol in stringToDecode)

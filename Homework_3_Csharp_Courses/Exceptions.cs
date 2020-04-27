@@ -11,7 +11,7 @@ namespace Homework_3_Csharp_Courses
 
         public class WrongFileException : Exception
         {
-            public WrongFileException() : base("Вы загрузили неподдерживаемый формат файла.")
+            public WrongFileException() : base("You have downloaded an unsupported file format.")
             {
 
             }
@@ -19,7 +19,7 @@ namespace Homework_3_Csharp_Courses
 
         public class WrongKeyException : Exception
         {
-            public WrongKeyException() : base("Вы не ввели ключ.")
+            public WrongKeyException() : base("Incorrect key.")
             {
 
             }

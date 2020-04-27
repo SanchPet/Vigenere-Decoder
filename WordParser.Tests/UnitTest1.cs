@@ -48,33 +48,88 @@ namespace WordParser.Tests
             using (var stream = File.OpenRead(Directory.GetCurrentDirectory() + "\\text.xlsx"))
             {
                 var ex = Assert.Throws<Exceptions.WrongFileException>(() => EncryptOperations.ParseWord(new TestClass(stream, "\\text.xlsx")));
-                Assert.That(ex.Message, Is.EqualTo("Вы загрузили неподдерживаемый формат файла."));
+                Assert.That(ex.Message, Is.EqualTo("You have downloaded an unsupported file format."));
             }
         }
 
         [Test]
         public void EncryptTest()
         {
-            string res1 = EncryptOperations.Encoder("Карл у Клары украл кораллы", "кларнет");
+            string res1 = EncryptOperations.Encoder("Карл у Клары украл кораллы", "кларнет", "Rus");
             string res = "Хлрь б Пюкьы дшхтц цобнрюё";
             Assert.AreEqual(res, res1);
         }
-
         [Test]
-        public void EncryptTestExcep()
+        public void EncryptTest2()
         {
-            var ex = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Decoder("Карл у Клары украл кораллы", ""));
-            var ex2 = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Encoder("Карл у Клары украл кораллы", ""));
-            Assert.That(ex.Message, Is.EqualTo("Вы не ввели ключ."));
-            Assert.That(ex2.Message, Is.EqualTo("Вы не ввели ключ."));
+            string res1 = EncryptOperations.Encoder("Hello, fellow humans!", "creep", "Eng");
+            string res = "Jvppd, hvppdy yyqppj!";
+            Assert.AreEqual(res, res1);
         }
 
+        [Test]
+        public void EncryptTest3()
+        {
+            string res1 = EncryptOperations.Encoder("Hello, fellow humans!", "здрасьте", "Rus");
+            string res = "Hello, fellow humans!";
+            Assert.AreEqual(res, res1);
+        }
         [Test]
         public void DecryptTest()
         {
-            string res1 = EncryptOperations.Decoder("Хлрь б Пюкьы дшхтц цобнрюё", "кларнет");
+            string res1 = EncryptOperations.Decoder("Хлрь б Пюкьы дшхтц цобнрюё", "кларнет", "Rus");
             string res = "Карл у Клары украл кораллы";
             Assert.AreEqual(res, res1);
         }
+        [Test]
+        public void DecryptTest2()
+        {
+            string res1 = EncryptOperations.Decoder("Jvppd, hvppdy yyqppj!", "creep", "Eng");
+            string res = "Hello, fellow humans!";
+            Assert.AreEqual(res, res1);
+        }
+
+        [Test]
+        public void DecryptTest3()
+        {
+            string res1 = EncryptOperations.Decoder("Jvppd, hvppdy yyqppj!", "куку", "Rus");
+            string res = "Jvppd, hvppdy yyqppj!";
+            Assert.AreEqual(res, res1);
+        }
+
+        [Test]
+        public void FilesEncrDecr()
+        {
+            var ex = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Decoder("Карл у Клары украл кораллы", "", "Rus"));
+            var ex2 = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Encoder("Карл у Клары украл кораллы", "", "Rus"));
+            Assert.That(ex.Message, Is.EqualTo("Incorrect key."));
+            Assert.That(ex2.Message, Is.EqualTo("Incorrect key."));
+        }
+
+        [Test]
+        public void FilesEncrDecr2()
+        {
+            var ex = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Decoder("Карл у Клары украл кораллы", "kekeke", "Rus"));
+            var ex2 = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Encoder("Карл у Клары украл кораллы", "kekekek", "Rus"));
+            Assert.That(ex.Message, Is.EqualTo("Incorrect key."));
+            Assert.That(ex2.Message, Is.EqualTo("Incorrect key."));
+        }
+        [Test]
+        public void FilesEncrDecr3()
+        {
+            var ex = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Decoder("Hello, fellow humans!", "ыхыхы", "Eng"));
+            var ex2 = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Encoder("Hello, fellow humans!", "ыхыхых", "Eng"));
+            Assert.That(ex.Message, Is.EqualTo("Incorrect key."));
+            Assert.That(ex2.Message, Is.EqualTo("Incorrect key."));
+        }
+        [Test]
+        public void FilesEncrDecr4()
+        {
+            var ex = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Decoder("Hello, fellow humans!", "Sssыхыхы", "Eng"));
+            var ex2 = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Encoder("Hello, fellow humans!", "Ssssыхыхых", "Eng"));
+            Assert.That(ex.Message, Is.EqualTo("Incorrect key."));
+            Assert.That(ex2.Message, Is.EqualTo("Incorrect key."));
+        }
+
     }
 }
