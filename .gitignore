@@ -14,7 +14,7 @@
 *.userprefs
 
 # Build results
-+Homework_3_Csharp_Courses/**/[Dd]ebug/
+Homework_3_Csharp_Courses/**/[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
