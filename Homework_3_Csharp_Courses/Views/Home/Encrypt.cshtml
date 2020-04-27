@@ -22,7 +22,7 @@
     {
         <b>Результат:</b>
         <br />
-        <textarea name="result" style="width:30vw; height:15em">@ViewBag.Result</textarea>
+        <textarea name="result" style="width:30vw; height:15em" readonly>@ViewBag.Result</textarea>
         <br />
         <form action="@Url.Action("DownloadFile")" method="post">
             <input type="submit" value="Download as docx" name="downlType" /> <input type="submit" value="Download as txt" name="downlType" /><br />

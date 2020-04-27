@@ -35,11 +35,33 @@ namespace WordParser.Tests
         [Test]
         public void FileDOwnloadingTest()
         {
-            string res = "Этот тест невозможно пройти.\nУдачи.";
+            string res = "Этот тест невозможно пройти.\r\nУдачи.";
             using (var stream = File.OpenRead(Directory.GetCurrentDirectory() + "\\test.docx"))
                 Assert.AreEqual(res, EncryptOperations.ParseWord(new TestClass(stream, "\\text.docx")));
         }
+        [Test]
+        public void FileDOwnloadingTest5()
+        {
+            string res = "Хахахахахахаахахахахаха, Я СЪЕЛ ДЕДА!!! А ты даже не знаешь...\r\n";
+            using (var stream = File.OpenRead(Directory.GetCurrentDirectory() + "\\test.txt"))
+                Assert.AreEqual(res, EncryptOperations.ParseWord(new TestClass(stream, "\\text.txt")));
+        }
 
+        [Test]
+        public void FileDOwnloadingTest3()
+        {
+            string res = "Hello, fellow humans!\r\nI love you.";
+            using (var stream = File.OpenRead(Directory.GetCurrentDirectory() + "\\testEng.docx"))
+                Assert.AreEqual(res, EncryptOperations.ParseWord(new TestClass(stream, "\\testEng.docx")));
+        }
+
+        [Test]
+        public void FileDOwnloadingTest4()
+        {
+            string res = "Hello, fellow humans!\r\nI love you.";
+            using (var stream = File.OpenRead(Directory.GetCurrentDirectory() + "\\testEng.txt"))
+                Assert.AreEqual(res, EncryptOperations.ParseWord(new TestClass(stream, "\\testEng.txt")));
+        }
 
 
         [Test]

@@ -36,7 +36,7 @@ namespace Homework_3_Csharp_Courses.Views.Home
                     for (int i = 0; i < doc.Paragraphs.Count; i++)
                     {
                         result += doc.Paragraphs[i].Text;
-                        if (i != doc.Paragraphs.Count - 1) result += "\n";
+                        if (i != doc.Paragraphs.Count - 1) result += "\r\n";
                     }
                 }
             }
@@ -44,7 +44,7 @@ namespace Homework_3_Csharp_Courses.Views.Home
             {
                 using (var fs = new StreamReader(file.OpenReadStream()))
                 {
-                    result+=fs.ReadToEnd();
+                    result += fs.ReadToEnd();
                 }
             }
             else throw new Exceptions.WrongFileException();
