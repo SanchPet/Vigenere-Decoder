@@ -26,6 +26,11 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+#AddingTestFiles
+!DecryptorUnitTests/bin/
+DecryptorUnitTests/bin/Debug/netcoreapp3.1/*
+!DecryptorUnitTests/bin/Debug/netcoreapp3.1/*.txt
+!DecryptorUnitTests/bin/Debug/netcoreapp3.1/*.docx
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
