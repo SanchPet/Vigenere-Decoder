@@ -60,16 +60,38 @@ namespace Homework_3_Csharp_Courses.Controllers
             return View();
         }
 
-        public IActionResult DownloadFile(string encodedText)
+        public IActionResult DownloadFile(string encodedText, string downlType)
         {
-            var stream = new MemoryStream();
-            using (var t = DocX.Create(stream))
+            try
             {
-                t.InsertParagraph(encodedText);
-                t.Save();
+                var stream = new MemoryStream();
+                if (downlType == "Download as docx")
+                {
+                    using (var t = DocX.Create(stream))
+                    {
+                        t.InsertParagraph(encodedText);
+                        t.Save();
+                    }
+                    stream.Position = 0;
+                    return File(stream, "application/vnd.ms-word", "result.docx");
+                }
+                else if (downlType == "Download as txt")
+                {
+                    using (var t = new StreamWriter(stream))
+                    {
+                        t.Write(encodedText.ToCharArray());
+                        t.Flush();
+                        stream.Position = 0;
+                        return File(new MemoryStream(stream.ToArray()), "text/plain", "result.txt");
+                    }
+                }
+                else throw new Exception("Неизвестная ошибка");
             }
-            stream.Position = 0;
-            return File(stream, "application/vnd.ms-word", "result.docx");
+            catch(Exception e)
+            {
+                return Content(e.Message);
+            }
+            
         }
 
         [HttpPost]

@@ -20,7 +20,15 @@ namespace WordParser.Tests
         public void FileGeneratingTest()
         {
             HomeController home = new HomeController(null);
-            home.DownloadFile("Съешь ещё этих мягких французких булок да выпей чаю.");
+            home.DownloadFile("Съешь ещё этих мягких французких булок да выпей чаю.", "Download as docx");
+            Assert.Pass();
+        }
+
+        [Test]
+        public void FileGeneratingTest2()
+        {
+            HomeController home = new HomeController(null);
+            home.DownloadFile("Съешь ещё этих мягких французких булок да выпей чаю.", "Download as txt");
             Assert.Pass();
         }
 
@@ -31,6 +39,8 @@ namespace WordParser.Tests
             using (var stream = File.OpenRead(Directory.GetCurrentDirectory() + "\\test.docx"))
                 Assert.AreEqual(res, EncryptOperations.ParseWord(new TestClass(stream, "\\text.docx")));
         }
+
+
 
         [Test]
         public void FileDOwnloadingTest2()
@@ -48,6 +58,15 @@ namespace WordParser.Tests
             string res1 = EncryptOperations.Encoder("Карл у Клары украл кораллы", "кларнет");
             string res = "Хлрь б Пюкьы дшхтц цобнрюё";
             Assert.AreEqual(res, res1);
+        }
+
+        [Test]
+        public void EncryptTestExcep()
+        {
+            var ex = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Decoder("Карл у Клары украл кораллы", ""));
+            var ex2 = Assert.Throws<Exceptions.WrongKeyException>(() => EncryptOperations.Encoder("Карл у Клары украл кораллы", ""));
+            Assert.That(ex.Message, Is.EqualTo("Вы не ввели ключ."));
+            Assert.That(ex2.Message, Is.EqualTo("Вы не ввели ключ."));
         }
 
         [Test]

@@ -33,13 +33,20 @@ namespace Homework_3_Csharp_Courses.Views.Home
                     }
                 }
             }
-            else throw Exceptions.CallExcepton(1);
+            else if (Path.GetExtension(file.FileName).ToLower() == ".txt")
+            {
+                using (var fs = new StreamReader(file.OpenReadStream()))
+                {
+                    result+=fs.ReadToEnd();
+                }
+            }
+            else throw new Exceptions.WrongFileException();
             return result;
         }
 
         public static string Encoder(string stringToEncode, string key)
         {
-            if (string.IsNullOrWhiteSpace(key)) throw new Exception("Вы не ввели ключ.");
+            if (string.IsNullOrWhiteSpace(key)) throw new Exceptions.WrongKeyException();
             StringBuilder res = new StringBuilder(); 
             int i = 0;
             foreach (var symbol in stringToEncode)
@@ -66,7 +73,7 @@ namespace Homework_3_Csharp_Courses.Views.Home
 
         public static string Decoder(string stringToDecode, string key)
         {
-            if (string.IsNullOrWhiteSpace(key)) throw new Exception("Вы не ввели ключ.");
+            if (string.IsNullOrWhiteSpace(key)) throw new Exceptions.WrongKeyException();
             StringBuilder res = new StringBuilder();
             int i = 0;
             foreach (var symbol in stringToDecode)

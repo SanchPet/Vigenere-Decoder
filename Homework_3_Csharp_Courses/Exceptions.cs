@@ -7,20 +7,19 @@ namespace Homework_3_Csharp_Courses
 {
     public class Exceptions
     {
-        public static Exception CallExcepton(int option)
-        {
-            switch (option)
-            {
-                case (1):
-                    return new WrongFileException();
-                default:
-                    return null;
-            }
-        }
+
 
         public class WrongFileException : Exception
         {
             public WrongFileException() : base("Вы загрузили неподдерживаемый формат файла.")
+            {
+
+            }
+        }
+
+        public class WrongKeyException : Exception
+        {
+            public WrongKeyException() : base("Вы не ввели ключ.")
             {
 
             }
