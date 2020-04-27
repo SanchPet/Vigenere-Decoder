@@ -14,7 +14,7 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/
++Homework_3_Csharp_Courses/**/[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -26,6 +26,11 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+#AddingTestFiles
+!WordParser.Tests/bin/
+WordParser.Tests/bin/Debug/netcoreapp3.1/*
+!WordParser.Tests/bin/Debug/netcoreapp3.1/*.txt
+!WordParser.Tests/bin/Debug/netcoreapp3.1/*.docx
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
