@@ -31,6 +31,7 @@ bld/
 WordParser.Tests/bin/Debug/netcoreapp3.1/*
 !WordParser.Tests/bin/Debug/netcoreapp3.1/*.txt
 !WordParser.Tests/bin/Debug/netcoreapp3.1/*.docx
+!WordParser.Tests/bin/Debug/netcoreapp3.1/*.xlsx
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
