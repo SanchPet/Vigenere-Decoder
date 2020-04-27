@@ -40,7 +40,17 @@ namespace Homework_3_Csharp_Courses.Controllers
             return View();
         }
 
+        public IActionResult Thanks()
+        {
+            return View();
+        }
+
         public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
         {
             return View();
         }
