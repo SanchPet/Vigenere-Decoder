@@ -11,7 +11,7 @@
         <textarea name="InputText" draggable="false">@ViewBag.BaseValue</textarea><br />
     </div>
     <input type="file" name="UsersFile" id="pathToFile" /><br><br>
-    <h4>Введите ключ:</h4>
+    <h4>Enter the key:</h4>
     <input type="text" name="Key" value="@ViewBag.Key" /><br><br>
     <input type="submit" value="Submit">
     <label style="margin-left:2vw;">@Html.RadioButton("Rus", "true", ViewBag.Rus == null, null)Russian</label>
@@ -20,7 +20,7 @@
 <div class="col-md-6" style="text-align:center">
     @if (ViewBag.Result != null)
     {
-        <b>Результат:</b>
+        <b>Result:</b>
         <br />
         <textarea name="result" style="width:30vw; height:15em" readonly>@ViewBag.Result</textarea>
         <br />
